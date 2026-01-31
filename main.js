@@ -1,3 +1,7 @@
+import { inject } from '@vercel/analytics';
+
+inject();
+
 // Intersection Observer for scroll animations
 const observerOptions = {
     threshold: 0.1
