@@ -1,0 +1,35 @@
+# Monthly Active Rows (MAR) vs. Streaming
+
+## Site Overview
+This website (MonthlyActiveRows.com) argues that the "Monthly Active Row" pricing model used by legacy ETL vendors (like Fivetran) is economically flawed for modern data stacks, particularly for AI applications. It promotes "Streaming" (specifically Streamkap) as a superior alternative based on data volume (GB) rather than row counts.
+
+## Core Arguments
+
+### 1. The Cost of Connectivity (The "Thorns")
+- **$5 Connection Tax**: Legacy vendors now often charge minimums per connection.
+- **Deletes Count**: You pay to ingest data, and you pay again to delete it.
+- **Normalization Inflation**: Normalizing nested JSON splits one record into many, artificially inflating the "Active Row" count.
+- **Unpredictability**: It is difficult to forecast costs when pricing is based on unique primary keys rather than simple storage size.
+
+### 2. The AI Problem
+- **Latency**: Batch ETL typically has 15-60 minute latency.
+- **Stale Context**: AI agents need real-time data to make decisions. "Stale Context = Hallucination."
+- **InHire Case Study**: Streamkap enabled sub-second latency for AI candidate screening, whereas batch solutions would have meant missing out on top talent.
+
+### 3. The Streamkap Solution
+- **Architecture**: Log-based Change Data Capture (CDC) with sub-second latency.
+- **Pricing**: Charged by Data Volume (GB), not rows.
+- **Efficiency**: 40x lower ingestion cost, 4x faster freshness.
+
+## Key Comparisons
+
+| Feature | Legacy ETL (MAR) | Streamkap (Streaming) |
+| :--- | :--- | :--- |
+| **Pricing** | Monthly Active Rows | Data Volume (GB) |
+| **Latency** | 15 min - 1 hour | < 1 Second |
+| **AI Readiness** | Low (Stale Context) | Real-Time (Instant Action) |
+| **Data Fidelity** | Low (Snapshots) | High (Log-based CDC) |
+
+## Pages
+- [Home](https://monthlyactiverows.com/): The main comparison and value proposition.
+- [What is MAR?](https://monthlyactiverows.com/what-is-mar.html): A detailed breakdown of how MAR is calculated and why it can be misleading.

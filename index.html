@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monthly Active Rows | The Economics of Data Ingestion</title>
+  <meta name="description"
+    content="A comprehensive analysis of Monthly Active Rows (MAR) vs. Streaming Value. Discover how to reduce TCO by 3x and achieve sub-second latency.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600&family=Poly&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">MonthlyActiveRows<span>.com</span></div>
+      <div class="nav-links">
+        <a href="./what-is-mar.html">What is MAR?</a>
+        <a href="#thorns">The Thorns</a>
+        <a href="#streaming">Streaming</a>
+        <a href="#savings">Savings</a>
+        <a href="#tco">TCO</a>
+        <a href="https://streamkap.com" class="cta-button-sk">Switch to Streamkap</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>The Monthly Active Row <span class="accent">Has Thorns</span></h1>
+        <p class="hero-subtitle">MAR is a vestige of legacy batch ETL. Streaming is the engine for <span
+            class="accent-blue">Real-Time AI</span>.</p>
+        <div class="hero-actions">
+          <a href="#thorns" class="btn btn-sk-primary">De-thorn Your Stack</a>
+          <a href="#streaming" class="btn btn-sk-secondary">Explore Streaming</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="./hero_rose_data_1769882581980.png" alt="Data Rose with Thorns" class="floating">
+      </div>
+    </section>
+
+    <section id="thorns" class="thorns-section">
+      <div class="container">
+        <h2 class="section-title">Why the "Rose" of Legacy ELT is Pricking Your Budget</h2>
+        <div class="thorns-grid">
+          <div class="thorn-card">
+            <div class="thorn-icon">💸</div>
+            <h3>The $5 Connection Tax</h3>
+            <p>Starting January 2026, every active connection now costs a minimum of $5/month. Low-volume connectors
+              that were once free now line the bill.</p>
+          </div>
+          <div class="thorn-card">
+            <div class="thorn-icon">🧠</div>
+            <h3>Stale Data Kills AI</h3>
+            <p>Batch ETL feeds your AI 24-hour old context. You cannot build intelligent agents on yesterday's news.
+              Latency is the new downtime.</p>
+          </div>
+          <div class="thorn-card">
+            <div class="thorn-icon">🗑️</div>
+            <h3>Deletes are the New Revenue</h3>
+            <p>Delete events now count towards paid MAR. You are literally paying to remove data you've already paid to
+              ingest.</p>
+          </div>
+          <div class="thorn-card">
+            <div class="thorn-icon">📉</div>
+            <h3>The Death of Bulk Discounts</h3>
+            <p>Pricing has shifted from connector-level isolation. More connectors now equals exponentially higher
+              costs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="streaming" class="streaming-section">
+      <div class="container split">
+        <div class="streaming-image">
+          <img src="./streamkap_architecture_branded.png" alt="Streamkap Architecture Diagram - Real-time Data Movement"
+            class="diagram-border">
+        </div>
+        <div class="streaming-content">
+          <h2 class="section-title-left">Moving to <span class="accent-blue">Continuous Streams</span></h2>
+          <p>Streamkap utilizes a streaming-first architecture. Instead of micro-batches and files, we hook directly
+            into the database transaction log.</p>
+          <ul class="feature-list">
+            <li><strong>Sub-second Latency:</strong> From log to warehouse in milliseconds. <em>The heartbeat of AI
+                agents.</em></li>
+            <li><strong>Direct Ingestion:</strong> Bypass the file stage entirely via Snowpipe Streaming.</li>
+            <li><strong>Pricing by Physics:</strong> Paid by GB volume, not abstract row counts.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="vibe-check">
+      <div class="container">
+        <h2 class="section-title text-center">Voice of the <span class="accent-blue">Data Engineer</span></h2>
+        <div class="vibe-grid">
+          <div class="vibe-card">
+            <p class="quote">"We are experiencing a huge spike (more than double) in monthly costs following the latest
+              changes... the pricing shoots up dramatically."</p>
+            <span class="vibe-source">r/dataengineering</span>
+          </div>
+          <div class="vibe-card">
+            <p class="quote">"Our current priority is to dump as much Fivetran as we can as fast as possible. Just
+              moving NetSuite off will cut our bill by 50%."</p>
+            <span class="vibe-source">u/latro87</span>
+          </div>
+          <div class="vibe-card">
+            <p class="quote">"It makes it really hard to estimate costs before you get the bill. Each connector is
+              priced independently, making cost optimization harder."</p>
+            <span class="vibe-source">r/dataengineering</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="savings" class="comparison-section">
+      <div class="container">
+        <h2 class="section-title text-center">The Mathematical Verdict</h2>
+        <div class="table-container">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Fivetran (Legacy)</th>
+                <th class="highlight">Streamkap (Modern)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pricing Model</td>
+                <td>Monthly Active Rows (MAR)</td>
+                <td class="highlight">Data Volume (GB)</td>
+              </tr>
+              <tr>
+                <td>Latency</td>
+                <td>15 min - 1 hour</td>
+                <td class="highlight">&lt; 1 Second</td>
+              </tr>
+              <tr>
+                <td>Snowflake Load Cost</td>
+                <td>High (Batch COPY INTO)</td>
+                <td class="highlight">Low (Snowpipe Streaming)</td>
+              </tr>
+              <tr>
+                <td>Data Fidelity</td>
+                <td>Low (Snapshots)</td>
+                <td class="highlight">High (Log-based CDC)</td>
+              </tr>
+              <tr>
+                <td>AI Readiness</td>
+                <td>Low (Stale Context)</td>
+                <td class="highlight">Real-Time (Instant Action)</td>
+              </tr>
+              <tr>
+                <td>GenAI Use Cases</td>
+                <td>Historical Reporting</td>
+                <td class="highlight">Autonomous Agents</td>
+              </tr>
+              <tr>
+                <td>Security</td>
+                <td>SaaS Processing</td>
+                <td class="highlight">BYOC (Your VPC)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai-context" class="ai-section">
+      <div class="container">
+        <h2 class="section-title text-center">AI Agents Need <span class="accent-blue">Now</span>, Not Yesterday</h2>
+        <div class="subtitle text-center">
+          "Monthly Active Rows" builds a legacy of stale context. Streaming builds a future of real-time action.
+        </div>
+
+        <div class="ai-grid">
+          <div class="ai-card legacy">
+            <h3>🚫 The Legacy Trap</h3>
+            <p>Legacy ETL relies on batches. By the time your AI agent receives the data, the "active row" is already
+              history.</p>
+            <div class="ai-stat" style="color: var(--sk-red); font-size: 2rem;">Stale Context = Hallucination</div>
+            <p style="margin-top: 1rem;">An AI agent acting on 24-hour old data isn't intelligent—it's dangerous.</p>
+          </div>
+
+          <div class="ai-card future">
+            <h3>⚡ The Streaming Reality</h3>
+            <p>Real-time context allows AI to act on <strong>intent</strong>, not just history. Capture the event the
+              millisecond it happens.</p>
+            <div class="ai-quote-box">
+              "Our AI screening demands real-time data. If you lose one or two days, you might lose the best candidate.
+              Streamkap ensures that as soon as a candidate applies, our AI can process them."
+              <div style="margin-top: 1rem; font-weight: bold; color: var(--sk-white);">- Juliano Tebinka, CDO at InHire
+              </div>
+            </div>
+            <div style="margin-top: 1.5rem;">
+              <span class="accent-blue" style="font-weight: 700;">InHire</span> achieves <span class="accent-blue"
+                style="font-weight: 700;">sub-second latency</span> for AI candidate screening.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tco" class="tco-section">
+      <div class="container text-center">
+        <h2>Reduce TCO by <span class="accent">3x</span></h2>
+        <p>By aligning pricing with physics and architecture with speed, Streamkap offers a lower Total Cost of
+          Ownership while delivering the <span class="accent-blue">real-time fuel</span> your AI needs.</p>
+        <div class="tco-stats">
+          <div class="stat">
+            <span class="stat-value">40x</span>
+            <span class="stat-label">Lower Ingestion Cost</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">4x</span>
+            <span class="stat-label">Faster Freshness</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">1GB</span>
+            <span class="stat-label">≈ 5 Million MAR</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-studies">
+      <div class="container">
+        <h2 class="section-title text-center">Proven at Scale</h2>
+        <div class="case-grid">
+          <a href="https://streamkap.com/blog/spoton-case-study/" target="_blank" class="case-card-link">
+            <div class="case-card">
+              <div class="case-logo-text">SpotOn</div>
+              <h3>SpotOn</h3>
+              <p>Reduced data latency to seconds, enabling restaurant reports in under 5 minutes — a 4x improvement over
+                previous SLAs.</p>
+            </div>
+          </a>
+          <a href="https://streamkap.com/blog/streaming-400-000-tables-with-streamkap/" target="_blank"
+            class="case-card-link">
+            <div class="case-card">
+              <div class="case-logo-text">Limble</div>
+              <h3>Limble</h3>
+              <p>Collapsed 400,000 shards into a single pipeline, cutting maintenance from 24 hours/month to just 2
+                hours.
+              </p>
+            </div>
+          </a>
+          <a href="https://streamkap.com/blog/streamkap-empowers-nala-money-to-optimize-real-time-money-transfers-to-africa/"
+            target="_blank" class="case-card-link">
+            <div class="case-card">
+              <div class="case-logo-text">Nala</div>
+              <h3>Nala Money</h3>
+              <p>Achieved real-time visibility into mid-market FX rates, protecting margins with dynamic pricing
+                adjustments.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-final">
+      <div class="container text-center">
+        <h2>Ready to stop counting rows and start streaming value?</h2>
+        <p>De-thorn your stack in 3 steps. Move to the next generation of data movement.</p>
+        <a href="https://streamkap.com" class="btn btn-sk-primary btn-large">Get Started with Streamkap</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">MonthlyActiveRows<span>.com</span></div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Analysis Source</a>
+        </div>
+        <div class="copyright">&copy; 2026 MonthlyActiveRows.com. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>

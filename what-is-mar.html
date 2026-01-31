@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What are Monthly Active Rows? | Analysis & Comparison</title>
+    <meta name="description"
+        content="A deep dive into Daily/Monthly Active Rows (MAR) pricing, how it works, why it's confusing, and how streaming architecture offers a transparent alternative.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600&family=Poly&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="./index.html"
+                    style="text-decoration:none; color:inherit;">MonthlyActiveRows<span>.com</span></a></div>
+            <div class="nav-links">
+                <a href="./index.html#thorns">The Thorns</a>
+                <a href="./index.html#streaming">Streaming</a>
+                <a href="./index.html#savings">Savings</a>
+                <a href="./index.html#tco">TCO</a>
+                <a href="https://streamkap.com" class="cta-button-sk">Switch to Streamkap</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="height: 60vh; min-height: 500px;">
+            <div class="hero-content text-center">
+                <h1>What are <span class="accent">Monthly Active Rows?</span></h1>
+                <p class="hero-subtitle" style="margin: 0 auto;">A transparent look at the metric defining legacy ETL
+                    costs, and why modern teams are moving to volume-based streaming.</p>
+            </div>
+        </section>
+
+        <section class="ai-section" style="background: var(--bg-dark);">
+            <div class="container">
+                <div class="split">
+                    <div style="flex: 1;">
+                        <h2 class="section-title-left">Defining the <span class="accent">MAR</span></h2>
+                        <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+                            <strong>Monthly Active Rows (MAR)</strong> is the number of distinct primary keys synced
+                            from your source system to your destination in a given calendar month.
+                        </p>
+                        <ul class="feature-list">
+                            <li><strong>Distinct Primary Keys:</strong> You are charged based on unique IDs, not total
+                                volume.</li>
+                            <li><strong>Updates & Deletes Count:</strong> Modifying a row counts as "active." Deleting a
+                                row also counts as "active."</li>
+                            <li><strong>Synthetic Keys:</strong> If no primary key exists, one is hashed for you—often
+                                inflating counts.</li>
+                        </ul>
+                        <div class="ai-quote-box" style="margin-top: 2rem;">
+                            "Any update to an existing row, no matter how minor, would typically count that row as
+                            active for the month. For data sources with high update frequencies, this could lead to
+                            substantial MAR counts."
+                        </div>
+                    </div>
+                    <div
+                        style="flex: 1; background: var(--bg-card); padding: 3rem; border-radius: 20px; border: 1px solid var(--border);">
+                        <h3 style="margin-bottom: 1.5rem;">How MAR Math Works</h3>
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: var(--sk-white); margin-bottom: 0.5rem;">Scenario A: The "Free" Update
+                            </h4>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">You update Row ID #123 on Jan
+                                1st. <br><span class="accent">Count: 1 MAR</span></p>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">You update
+                                Row ID #123 again on Jan 15th. <br><span class="accent-blue">Count: 0 MAR (Already
+                                    Active)</span></p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--sk-white); margin-bottom: 0.5rem;">Scenario B: The "Hidden"
+                                Inflation</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">You have a JSON blob column. You
+                                normalize it into 5 separate child tables.</p>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">One update
+                                to the source record triggers updates in 5 tables. <br><span class="accent">Count: 5
+                                    MARs for 1 Data Event</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="thorns-section">
+            <div class="container">
+                <h2 class="section-title text-center">Why MAR is <span class="accent">Painful</span> for Modern Data
+                </h2>
+                <p class="text-center"
+                    style="max-width: 800px; margin: 0 auto 4rem auto; color: var(--text-secondary);">
+                    While MAR claims to align with value, execution often feels like "smart value extraction." Here is
+                    why it hurts.
+                </p>
+                <div class="thorns-grid">
+                    <div class="thorn-card">
+                        <div class="thorn-icon">🔢</div>
+                        <h3>Normalization Inflation</h3>
+                        <p>Fivetran's normalization of nested data (like JSON) splits one record into many. A single
+                            source event can explode into multiple billable MARs.</p>
+                    </div>
+                    <div class="thorn-card">
+                        <div class="thorn-icon">📉</div>
+                        <h3>The Ghost of Connection Pricing</h3>
+                        <p>New pricing models isolate MAR by connector, removing bulk discounts. "It’s harder to justify
+                            building and maintaining a new connector that will be low volume."</p>
+                    </div>
+                    <div class="thorn-card">
+                        <div class="thorn-icon">🔮</div>
+                        <h3>Unpredictability</h3>
+                        <p>"Lack of predictability in costs." It is nearly impossible to forecast how many unique
+                            primary keys will be touched by upstream application changes.</p>
+                    </div>
+                    <div class="thorn-card">
+                        <div class="thorn-icon">🐢</div>
+                        <h3>Penalty for Speed</h3>
+                        <p>MAR discourages frequent syncing. To save money, engineers slow down syncs, killing the
+                            real-time potential for AI and operational dashboards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="streaming-section">
+            <div class="container text-center">
+                <h2 class="section-title">The <span class="accent-blue">Streamkap</span> Alternative</h2>
+                <p style="max-width: 800px; margin: 0 auto 3rem auto; font-size: 1.2rem;">
+                    Stop counting keys. Start measuring physics. Streamkap charges by <strong>Data Volume (GB)</strong>.
+                </p>
+
+                <div class="table-container" style="max-width: 900px; margin: 0 auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Fivetran (MAR)</th>
+                                <th style="width: 50%;" class="highlight">Streamkap (GB Volume)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Complex:</strong> Based on unique primary keys, normalization, and connector
+                                    isolation.</td>
+                                <td class="highlight"><strong>Simple:</strong> Based on the raw size of data moved.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Punishes Normalization:</strong> Normalizing complex JSON adds cost.</td>
+                                <td class="highlight"><strong>Agnostic:</strong> 1GB of JSON is 1GB of data, regardless
+                                    of how you structure it.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Opaque:</strong> Hard to audit which keys were "active."</td>
+                                <td class="highlight"><strong>Transparent:</strong> Easy to verify against database
+                                    logs.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Encourages Latency:</strong> "Sync less to pay less."</td>
+                                <td class="highlight"><strong>Built for Speed:</strong> Real-time is the default
+                                    standard, not a luxury.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <a href="https://streamkap.com" class="btn btn-sk-primary btn-large">Stop Counting Rows</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">MonthlyActiveRows<span>.com</span></div>
+                <div class="footer-links">
+                    <a href="./index.html">Home</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+                <div class="copyright">&copy; 2026 MonthlyActiveRows.com. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
